@@ -1,6 +1,7 @@
-# ZENCash Mobile
+# ZENCash Remote
 
-ZENCash mobile app built using Onsen UI, Redux, React and Webpack.
+ZENCash remote, for controlling your secure nodes.
+Built using Onsen UI, Redux, React and Webpack.
 
 Use node v6.11.X
 
@@ -38,27 +39,3 @@ Icons are a bit of a bitch to setup for iOS. Make sure you've added the ios plat
 1. Xcode -> Preferences -> Account -> sign in with your apple id
 2. https://i.stack.imgur.com/w4SlR.gif
 ```
-
-# Contributors
-
-[kendricktan](http://github.com/kendricktan/)
-
-[alexanderzabuga](https://github.com/alexanderzabuga)
-
-[kevinah95](https://github.com/kevinah95)
-
-[afucher](https://github.com/afucher)
-
-[andyvh](https://github.com/andyvh)
-
-[darkavenger](https://github.com/darkavenger)
-
-[emhaye](https://github.com/emhaye)
-
-[simoneddeland](https://github.com/simoneddeland)
-
-[dropnib](https://github.com/dropnib)
-
-[rubyxroot](https://github.com/rubyxroot)
-
-[berar](https://github.com/berar)
