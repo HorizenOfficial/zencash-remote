@@ -13,12 +13,10 @@ import {
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import { setContacts } from '../actions/Contacts'
 import { setSecretPhrase, setSecretItems } from '../actions/Secrets'
 import { setLanguage, setCurrency, setWalletPin } from '../actions/Settings'
 
-import { ZENCASH_MOBILE_SAVE_PATH, ZENCASH_MOBILE_CONTACTS_PATH, readFromFile } from '../utils/persistentStorage'
-import { phraseToSecretItems } from '../utils/wallet'
+import { ZENCASH_MOBILE_SAVE_PATH, readFromFile } from '../utils/persistentStorage'
 
 import MainPage from './MainPage'
 import SetupPage from './SetupPage'
@@ -37,7 +35,7 @@ class App extends React.Component {
 
     this.state = {
       tempPin: '',
-      hasExistingWallet: false,
+      hasExistingSettings: false,
       hasExistingPin: false,
       hasInputPin: false,
       readSavedFile: false
@@ -45,36 +43,13 @@ class App extends React.Component {
   }
 
   componentDidMount () {
-    readFromFile(ZENCASH_MOBILE_CONTACTS_PATH, (data) => {
-      // Get contact list      
-      try {
-        data = JSON.parse(data)
-      } catch (err) {
-        data = {contacts: []}
-      }
-      this.props.setContacts(data.contacts)
-    }, () => {})
-
     readFromFile(ZENCASH_MOBILE_SAVE_PATH, (data) => {
-      // If errors while we're reading the JSOn
-      // then just assume its empty
+      // If errors while we're reading the JSON
+      // then just assume its empty    
       try {
         data = JSON.parse(data)
       } catch (err) {
         data = {}
-      }
-
-      // Get secret phrase
-      if (data.secretPhrase !== undefined) {
-        const secretPhrase = data.secretPhrase
-        const secretItems = phraseToSecretItems(secretPhrase)
-
-        this.props.setSecretItems(secretItems)
-        this.props.setSecretPhrase(secretPhrase)
-
-        this.setState({
-          hasExistingWallet: true
-        })
       }
 
       // Get settings
@@ -124,7 +99,7 @@ class App extends React.Component {
             ? (
               this.state.hasInputPin
                 ? (
-                  this.state.hasExistingWallet
+                  this.state.hasExistingSettings
                     ? (
                       <Navigator
                         renderPage={renderPage}
@@ -132,7 +107,7 @@ class App extends React.Component {
                       />
                     )
                     : (
-                      <SetupPage setHasExistingWallet={(v) => this.setState({ hasExistingWallet: v })} />
+                      <SetupPage sethasExistingSettings={(v) => this.setState({ hasExistingSettings: v })} />
                     )
                 )
                 : (
@@ -143,7 +118,9 @@ class App extends React.Component {
             )
             : (
               // Ask them to setup new pin
-              <NewPinPage onComplete={() => this.setState({ hasExistingPin: true, hasInputPin: true })} />
+              <NewPinPage onComplete={() => {
+                this.setState({ hasExistingPin: true, hasInputPin: true })
+              }} />
             )
         )
         : (
@@ -166,7 +143,6 @@ App.propTypes = {
   setSecretPhrase: PropTypes.func.isRequired,
   setLanguage: PropTypes.func.isRequired,
   setCurrency: PropTypes.func.isRequired,
-  setContacts: PropTypes.func.isRequired,
   context: PropTypes.object.isRequired,
   navigator: PropTypes.object.isRequired
 }
@@ -181,7 +157,6 @@ function matchDispatchToProps (dispatch) {
   // Set context for the send page
   return bindActionCreators(
     {
-      setContacts,
       setSecretItems,
       setSecretPhrase,
       setLanguage,

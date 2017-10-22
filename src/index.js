@@ -17,7 +17,7 @@ import 'onsenui/css/onsenui.css'
 import 'onsenui/css/onsen-css-components.css'
 import '../assets/css/index.css'
 
-import { ZENCASH_MOBILE_SAVE_PATH, ZENCASH_MOBILE_CONTACTS_PATH, writeToFile } from './utils/persistentStorage'
+import { ZENCASH_MOBILE_SAVE_PATH, writeToFile } from './utils/persistentStorage'
 
 const logger = createLogger()
 
@@ -33,19 +33,10 @@ store.subscribe(() => {
   const state = store.getState()
 
   // Save secret phrase and settings
-  if (state.secrets.secretPhrase !== null && state.settings.pin !== null) {
-    // Write to file woot woot    
-    writeToFile(ZENCASH_MOBILE_SAVE_PATH, {
-      secretPhrase: state.secrets.secretPhrase,
-      settings: state.settings
-    })
-  }
-
-  // Save contacts (different file)
-  if (state.contacts.length > 0) {
+  if (state.settings.pin !== null) {
     // Write to file woot woot
-    writeToFile(ZENCASH_MOBILE_CONTACTS_PATH, {
-      contacts: state.contacts
+    writeToFile(ZENCASH_MOBILE_SAVE_PATH, {
+      settings: state.settings
     })
   }
 })

@@ -11,7 +11,7 @@ import {
 
 import TRANSLATIONS from '../translations'
 
-class RecoverWalletPage extends React.Component {
+class AboutPage extends React.Component {
   renderToolbar () {
     const CUR_LANG = this.props.settings.language
 
@@ -31,7 +31,7 @@ class RecoverWalletPage extends React.Component {
     return (
       <Page renderToolbar={this.renderToolbar.bind(this)}>
         <div style={{padding: '12px 12px 0 12px', textAlign: 'center'}}>
-          <p>ZEN Wallet v{VERSION}</p>
+          <p>ZEN Remote v{VERSION}</p>
           <br/>
           <p>Author: Kendrick Tan</p>
           <p>Made for zensystem.io</p>
@@ -47,7 +47,7 @@ class RecoverWalletPage extends React.Component {
   }
 }
 
-RecoverWalletPage.propTypes = {
+AboutPage.propTypes = {
   settings: PropTypes.object.isRequired,
   navigator: PropTypes.object.isRequired
 }
@@ -58,4 +58,4 @@ function mapStateToProps (state) {
   }
 }
 
-export default connect(mapStateToProps)(RecoverWalletPage)
+export default connect(mapStateToProps)(AboutPage)

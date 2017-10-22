@@ -99,7 +99,7 @@ export const SET_LANGUAGE = 'SET_LANGUAGE'
 export const SET_CURRENCY = 'SET_CURRENCY'
 export const SET_WALLET_PIN = 'SET_WALLET_PIN'
 
-export function setWalletPin (pin) {
+export function setWalletPin (pin) {  
   return {
     type: SET_WALLET_PIN,
     pin

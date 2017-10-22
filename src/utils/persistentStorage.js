@@ -1,5 +1,4 @@
-export const ZENCASH_MOBILE_SAVE_PATH = 'zencash_wallet.json'
-export const ZENCASH_MOBILE_CONTACTS_PATH = 'zencash_wallet_contacts.json'
+export const ZENCASH_MOBILE_SAVE_PATH = 'zencash_remote.json'
 
 export function readFromFile (fileName, onSuccess, onFail) {
   const pathToFile = cordova.file.dataDirectory + fileName

@@ -13,7 +13,7 @@ export const ENGLISH_TRANSLATION: TRANSLATION_OBJ = {
     out: 'Out'
   },
   MainPage: {
-    title: 'ZEN Wallet',
+    title: 'ZEN Remote',
     value: 'Value',
     send: 'Send',
     received: 'Received',
@@ -78,8 +78,8 @@ export const ENGLISH_TRANSLATION: TRANSLATION_OBJ = {
   },
   PinPage: {
     changePinTitle: 'Change PIN',
-    newPinPageTitle: 'ZEN Wallet Setup',
-    verifyPinPageTitle: 'ZEN Wallet PIN Verification',
+    newPinPageTitle: 'ZEN Remote Setup',
+    verifyPinPageTitle: 'ZEN Remote PIN Verification',
     setupNewPin: 'Set up a new PIN',
     reenterPin: 'Re-enter your PIN',
     pinsNotSimilar: 'PINs entered do not match',

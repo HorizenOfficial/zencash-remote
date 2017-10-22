@@ -16,9 +16,6 @@ import {
 } from 'react-onsenui'
 
 import ChangePinPage from './ChangePinPage'
-import SecretPhrasePage from './SecretPhrasePage'
-import RecoverWalletPage from './RecoverWalletPage'
-import ShowPrivateKeyPage from './ShowPrivateKeyPage'
 import SelectCurrencyPage from './SelectCurrencyPage'
 import SelectLanguagePage from './SelectLanguagePage'
 
@@ -53,9 +50,6 @@ class SettingsPage extends React.Component {
     const changePinLang = TRANSLATIONS[CUR_LANG].PinPage.changePinTitle
     const currencyLang = TRANSLATIONS[CUR_LANG].SettingsPage.currency
     const languageLang = TRANSLATIONS[CUR_LANG].SettingsPage.language
-    const secretPhraseLang = TRANSLATIONS[CUR_LANG].SettingsPage.secretPhrase
-    const showPrivateKeysLang = TRANSLATIONS[CUR_LANG].SettingsPage.showPrivateKeys
-    const recoverExistingWalletLang = TRANSLATIONS[CUR_LANG].SettingsPage.recoverExistingWallet
 
     return (
       <Page renderToolbar={this.renderToolbar.bind(this)}>
@@ -75,22 +69,6 @@ class SettingsPage extends React.Component {
             onClick={this.gotoComponent.bind(this, ChangePinPage)}
             tappable>
             { changePinLang }
-          </ListItem>
-          <ListHeader></ListHeader>
-          <ListItem
-            onClick={this.gotoComponent.bind(this, SecretPhrasePage)}
-            tappable>
-            { secretPhraseLang }
-          </ListItem>
-          <ListItem
-            onClick={this.gotoComponent.bind(this, ShowPrivateKeyPage)}
-            tappable>
-            { showPrivateKeysLang }
-          </ListItem>
-          <ListItem
-            onClick={this.gotoComponent.bind(this, RecoverWalletPage)}
-            tappable style={{color: 'red'}}>
-            { recoverExistingWalletLang }
           </ListItem>
         </List>
       </Page>
